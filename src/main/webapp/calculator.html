@@ -112,72 +112,131 @@
 		let multiply = document.querySelector('#multiply');
 		let dot = document.querySelector('#dot');
 		let divide = document.querySelector('#divide');
+		let addNum = '';
+		let subtractNum = '';
+		let multiplyNum = '';
+		let divideNum = '';
 		
 		one.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + one.value;
-		})
+		});
 		two.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + two.value;
-		})
+		});
 		three.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + three.value;
-		})
+		});
 		four.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + four.value;
-		})
+		});
 		five.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + five.value;
-		})
+		});
 		six.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + six.value;
-		})
+		});
 		seven.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + seven.value;
-		})
+		});
 		eight.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + eight.value;
-		})
+		});
 		nine.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + nine.value;
-		})
+		});
 		zero.addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
 			output.value = output.value + zero.value;
-		})
+		});
 		
 		clear.addEventListener('click', function() {
-		output.value = 0;
-		})
+			output.value = 0;
+			addNum = '';
+			subtractNum = '';
+			multiplyNum = '';
+			divideNum = '';
+		});
 		
+		
+		
+		add.addEventListener('click', function() {
+			if(output.value != '' && addNum == '') {
+				addNum = output.value;
+				output.value = '';
+			} else if(addNum != '') {
+				addNum = Number(addNum) + Number(output.value)
+				output.value = '';
+			}
+			
+		});
+		
+		subtract.addEventListener('click', function () {
+			if(output.value != '') {
+				subtractNum = output.value;
+			}
+			output.value = '';
+		});
+		
+		multiply.addEventListener('click', function () {
+			if(output.value != '') {
+				multiplyNum = output.value;
+			}
+			output.value = '';
+		});
+		
+		divide.addEventListener('click', function () {
+			if(output.value != '') {
+				divideNum = output.value;
+			}
+			output.value = '';
+		});
+		
+		enter.addEventListener('click', function() {
+			if(addNum != 0) {
+				output.value = Number(addNum)
+			}
+
+			if(subtractNum != 0) {
+				output.value = Number(subtractNum) - Number(output.value)
+			}
+			
+			if(multiplyNum != 0) {
+				output.value = Number(multiplyNum) * Number(output.value)
+			}
+			
+			if(divideNum != 0) {
+				output.value = Number(divideNum) / Number(output.value)
+			}
+		});
 		
 		// let result = ball.slice(0, 6); // 값 1자리부터 값 2자리 앞까지 반환 0, 1, 2, 3, 4, 5 인덱스 반환한 배열 /java의 substring과 같음
 		
