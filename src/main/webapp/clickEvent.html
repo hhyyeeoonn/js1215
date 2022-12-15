@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button type = "button" id = "b1">button1</button> <br>
+	<button type = "button" id = "b2" value = "goodee">button2</button> <br>
+	<button type = "button" id = "b3" value = "5">button3</button> <br>
+	<button type = "button" id = "b4" value = "hello">button4</button> :
+	<input type = "text" id = "b4Result" readonly = "readonly">
+	<button type = "button" id = "b4Clear">b4Clear</button>
+	<script>
+		// 이벤트객체.addEventListener(이벤트종류, 함수)
+		
+		// 1) 클릭 경고창 출력
+		let b1 = document.querySelector('#b1');
+		b1.addEventLi
+		
+		document.querySelector('#b1').addEventListener('click', function() { // 매개변수 없으면 null로 들어감
+			alert('button1 클릭테스트');
+		});
+		
+		// 2) 값 넘기기
+		document.querySelector('#b2').addEventListener('click', function() {
+			alert('b2버튼 value : ' + document.querySelector('#b2').value);
+		});
+		
+		// 3) 숫자값 넘기기
+		document.querySelector('#b3').addEventListener('click', function() {
+			alert('b3버튼 value+10 : ' + (Number(document.querySelector('#b3').value) + 10));  // Number() 괄호안 문자값을 숫자로 변환
+		});
+		
+		// 4) 다른 input value에 출력하기
+		document.querySelector('#b4').addEventListener('click', function() {
+			document.querySelector('#b4Result').value = document.querySelector('#b4').value;
+		})
+		
+		document.querySelector('#b4Clear').addEventListener('click', function() {
+			document.querySelector('#b4Result').value = '';
+		})
+		
+	</script>
+</body>
+</html>

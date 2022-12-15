@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 계산기 CSS 코드 구현 */
+	td {text-align: center;}
+	input {width: 95%;}
+	button {width: 90%;}
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td colspan="4">
+				GDJ58 Calculator. 
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<input type="text" id="output" readonly="readonly">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button type="button" id="clear">Clear</button>
+			</td>
+			<td colspan="2">
+				<button type="button" id="enter">Enter</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" id="seven" value="7">7</button>
+			</td>
+			<td>
+				<button type="button" id="eight" value="8">8</button>
+			</td>
+			<td>
+				<button type="button" id="nine" value="9">9</button>
+			</td>
+			<td>
+				<button type="button" id="add">+</button>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+				<button type="button" id="four" value="4">4</button>
+			</td>
+			<td>
+				<button type="button" id="five" value="5">5</button>
+			</td>
+			<td>
+				<button type="button" id="six" value="6">6</button>
+			</td>
+			<td>
+				<button type="button" id="subtract">-</button>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+				<button type="button" id="one" value="1">1</button>
+			</td>
+			<td>
+				<button type="button" id="two" value="2">2</button>
+			</td>
+			<td>
+				<button type="button" id="three" value="3">3</button>
+			</td>
+			<td>
+				<button type="button" id="multiply">*</button>
+			</td>	
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button type="button" id="zero" value="0">0</button>
+			</td>
+			<td>
+				<button type="button" id="dot" value = ".">.</button>
+			</td>
+			<td>
+				<button type="button" id="divide">/</button>
+			</td>	
+		</tr>
+		<tr>
+			<td colspan="4">
+				Copyright ⓒ GooDee Academy. All rights reserved.
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+		let output = document.querySelector('#output');
+		output.value = '';
+
+		let number = 0;
+		let one = document.querySelector('#one');
+		let two = document.querySelector('#two');
+		let three = document.querySelector('#three');
+		let four = document.querySelector('#four');
+		let five = document.querySelector('#five');
+		let six = document.querySelector('#six');
+		let seven = document.querySelector('#seven');
+		let eight = document.querySelector('#eight');
+		let nine = document.querySelector('#nine');
+		let zero = document.querySelector('#zero');
+		let enter = document.querySelector('#enter');
+		let clear = document.querySelector('#clear');
+		let add = document.querySelector('#add');
+		let subtract = document.querySelector('#subtract');
+		let multiply = document.querySelector('#multiply');
+		let dot = document.querySelector('#dot');
+		let divide = document.querySelector('#divide');
+		
+		one.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + one.value;
+		})
+		two.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + two.value;
+		})
+		three.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + three.value;
+		})
+		four.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + four.value;
+		})
+		five.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + five.value;
+		})
+		six.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + six.value;
+		})
+		seven.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + seven.value;
+		})
+		eight.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + eight.value;
+		})
+		nine.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + nine.value;
+		})
+		zero.addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + zero.value;
+		})
+		
+		clear.addEventListener('click', function() {
+		output.value = 0;
+		})
+		
+		
+		// let result = ball.slice(0, 6); // 값 1자리부터 값 2자리 앞까지 반환 0, 1, 2, 3, 4, 5 인덱스 반환한 배열 /java의 substring과 같음
+		
+		
+
+
+	</script>
+</body>
+</html>
