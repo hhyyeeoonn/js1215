@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>58기 자바스크립트 로또</title>
+<style>
+    div     {width:120px;height:120px;
+            border:1px solid gray;
+            display:table; float:left;
+            margin-right:5px;}
+   
+    p       {font-size:50px;
+            display:table-cell;
+            text-align:center;
+            vertical-align:middle;}
+   
+    nav     {clear:both;
+            text-align:center;
+            width:884px;}
+   
+    #red    {background-color:red;}
+    #orange {background-color:orange;} 
+    #yellow {background-color:yellow;} 
+    #green  {background-color:green;}  
+    #blue   {background-color:blue;}   
+    #navy   {background-color:navy;}   
+    #purple {background-color:purple;}     
+</style>
+<script>
+	/* 
+	window.addEventListener("load")
+	load 이벤트는 문서내의 모든 리소스(이미지, 스크립트)의 다운로드가 끝난 후에 실행된다
+	똑같은 효과를 얻는 또다른 방법으로 자바스크립트 코드를 문서 제일 아래에 위치시키는 것이 있다
+	-https://opentutorials.org/module/904/6765
+	*/
+    window.addEventListener("load", function(){ // window는 전역을 가리킴
+        let start = document.querySelector("#start");
+        let stop = document.querySelector("#stop");
+       
+        // var와 let의 차이 https://velog.io/@skd/javascript-var-let-const
+        /*
+        value와 innerHTML의 차이
+        값을 넘길땐 input박스를 이용하는데 input태그안에 value에 값이 들어가있어야 값이 넘어갑니다
+        innerHTML으로는 value에 값을 넣을 수가 없지요
+        innerHTML은 말그대로 div나 p태그등에 삽입하는거구요
+        <input value="값"/> 여기엔 value를 사용
+
+        <div>값</div> 여기엔 innerHtml을 사용
+        */
+        let redNum = document.querySelector("#red_num");
+        let orangeNum = document.querySelector("#orange_num");
+        let yellowNum = document.querySelector("#yellow_num");
+        let greenNum = document.querySelector("#green_num");
+        let blueNum = document.querySelector("#blue_num");
+        let navyNum = document.querySelector("#navy_num");
+        let purpleNum = document.querySelector("#purple_num");
+       
+        let flag = false;
+        let one,two,three,four,five,six,seven; // ? 왜 나열되어있는가?
+       
+        start.addEventListener("click",function(){
+            if(!flag){
+                flag = true;
+                one = setInterval(function(){
+                    redNum.innerHTML = Math.floor(Math.random()*45)+1; 
+                }, 50);
+               
+                two = setInterval(function(){
+                    orangeNum.innerHTML = Math.floor(Math.random()*45)+1;  
+                }, 50);
+               
+                three = setInterval(function(){
+                    yellowNum.innerHTML = Math.floor(Math.random()*45)+1;  
+                }, 50);
+               
+                four = setInterval(function(){
+                    greenNum.innerHTML = Math.floor(Math.random()*45)+1;   
+                }, 50);
+               
+                five = setInterval(function(){
+                    blueNum.innerHTML = Math.floor(Math.random()*45)+1;
+                }, 50);
+               
+                six = setInterval(function(){
+                    navyNum.innerHTML = Math.floor(Math.random()*45)+1;
+                }, 50);
+               
+                seven = setInterval(function(){
+                    purpleNum.innerHTML = Math.floor(Math.random()*45)+1;  
+                }, 50);
+            }
+        });
+       
+        stop.addEventListener("click", function(){
+            if(flag) {
+                var result = lotto(7);
+                setTimeout(function(){
+                    clearInterval(one);
+                    redNum.innerHTML = result[0];
+                }, 1);
+               
+                setTimeout(function(){
+                    clearInterval(two);
+                    orangeNum.innerHTML = result[1];
+                }, 1000);
+               
+                setTimeout(function(){
+                    clearInterval(three);
+                    yellowNum.innerHTML = result[2];
+                }, 2000);
+               
+                setTimeout(function(){
+                    clearInterval(four);
+                    greenNum.innerHTML = result[3];
+                }, 3000);
+               
+                setTimeout(function(){
+                    clearInterval(five);
+                    blueNum.innerHTML = result[4];
+                }, 4000);
+               
+                setTimeout(function(){
+                    clearInterval(six);
+                    navyNum.innerHTML = result[5];
+                }, 5000);
+               
+                setTimeout(function(){
+                    clearInterval(seven);
+                    purpleNum.innerHTML = result[6];
+                    flag = false;
+                }, 6000);
+            }
+        });
+    });
+   
+    function lotto(n){
+        var arr = new Array(45);
+        for(var i=0; i<arr.length; i++){
+            arr[i] = i+1;
+        }
+       
+        for(var j=0; j<10000; j++){
+            var temp = arr[0];
+            var ran = Math.floor(Math.random()*45);
+            arr[0] = arr[ran];
+            arr[ran] = temp;
+        }
+       
+        return arr.slice(0, n);
+    }
+   
+//  var test = lotto(7);
+//  console.log(test);
+</script>
+</head>
+<body>
+    <h1>로또 생성기</h1>
+    <div id="red"><p id="red_num">0</p></div>
+    <div id="orange"><p id="orange_num">0</p></div>
+    <div id="yellow"><p id="yellow_num">0</p></div>
+    <div id="green"><p id="green_num">0</p></div>
+    <div id="blue"><p id="blue_num">0</p></div>
+    <div id="navy"><p id="navy_num">0</p></div>
+    <div id="purple"><p id="purple_num">0</p></div>
+    <nav>
+        <input type="button" value="start" id="start">
+        <input type="button" value="stop" id="stop">
+    </nav>
+</body>
+</html>

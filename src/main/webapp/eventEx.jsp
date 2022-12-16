@@ -21,13 +21,19 @@
 			function() {}
 			2) 화살표 함수
 			() => {}
+			
+			자바스크립트는 변수선언해도 변수가 만들어진다
+			let x = 10; 안해도 x = 10; 하면 만들어짐
+			근데 var로 됨
+			**eval
+			** https://jusungpark.tistory.com/25
 		*/
 		document.querySelector('#luffy').addEventListener('click', function() {
 			alert('이미지클릭')
 		});
 	</script>
 	
-	<h2>2) blur</h2>
+	<h2>2) 마우스 이벤트 blur</h2>
 	<div>
 		<input type = "text" id = "id"><span id = "idMsg" style = "color : red;"></span>
 	</div>
@@ -43,7 +49,7 @@
 		}); 
 	</script>
 	
-	<h2>3) change</h2>
+	<h2>3) 폼태그 이벤트 change</h2>
 	<div>
 		select 태그
 	</div>
@@ -64,8 +70,56 @@
 			} else {
 				alert(local.value);
 			}
-			alert();
 		}); 
 	</script>
+	
+	<div>
+		input type = checkbox  <!-- 폼태그 이벤트 -->
+	</div>
+	<div>
+		관심사(3개까지 선택 가능)<br>
+		<input type = "checkbox" name = "interest" class = "interest" value = "스포츠">스포츠
+		<input type = "checkbox" name = "interest" class = "interest" value = "경제">경제
+		<input type = "checkbox" name = "interest" class = "interest" value = "사회">사회
+		<input type = "checkbox" name = "interest" class = "interest" value = "역사">역사
+		<input type = "checkbox" name = "interest" class = "interest" value = "정치">정치
+	</div>
+	<script>
+		let interest = document.querySelectorAll('.interest') // 배열 checkbox 전부 받아옴
+		// foreach 반복문
+		interest.forEach(function(item) {
+			item.addEventListener('change', function() {
+				let ckIterest = document.querySelectorAll('.interest : checked')
+				alert(ckInterest.length);
+				if(ckInterest.length > 3) {
+					alert('3개까지만 선택 가능');
+					item.checked = false; // 4번째 checked를 해제
+				}
+			})
+		});
+	</script>
+	
+	<h2>4) 키보드 이벤트 keyup</h2>
+	<div>
+		글자수 : <span id = "count"></span> /100
+		<br>
+		<textarea id = "memo" rows = "5" cols = " 50"></textarea>
+	</div>
+	<script>
+		const MAX_COUNT = 100;// 상수선언 : memo안의 최대글자수 const상수 
+		document.querySelector('#memo').addEventListener('keyup', function() {
+			console.log(memo.value.length);
+			let len = memo.value.length;
+			console.log(len);
+			if(len > MAX_COUNT) { // (MAX_COUNT - len) < 1
+				alert(MAX_COUNT + '자 까지만 입력할 수 있습니다');
+				memo.value = memo.value.substring(0, MAX_COUNT);
+			} else {
+				document.querySelector('#count').innerHTML = len;
+			}
+		})
+	</script>
+	
+	
 </body>
 </html>

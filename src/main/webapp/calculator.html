@@ -93,20 +93,6 @@
 	<script>
 		let output = document.querySelector('#output');
 		output.value = '';
-
-		let number = 0;
-		let one = document.querySelector('#one');
-		let two = document.querySelector('#two');
-		let three = document.querySelector('#three');
-		let four = document.querySelector('#four');
-		let five = document.querySelector('#five');
-		let six = document.querySelector('#six');
-		let seven = document.querySelector('#seven');
-		let eight = document.querySelector('#eight');
-		let nine = document.querySelector('#nine');
-		let zero = document.querySelector('#zero');
-		let enter = document.querySelector('#enter');
-		let clear = document.querySelector('#clear');
 		let add = document.querySelector('#add');
 		let subtract = document.querySelector('#subtract');
 		let multiply = document.querySelector('#multiply');
@@ -117,124 +103,198 @@
 		let multiplyNum = '';
 		let divideNum = '';
 		
-		one.addEventListener('click', function() {
+		document.querySelector('#one').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + one.value;
+			output.value = output.value + document.querySelector('#one').value;
 		});
-		two.addEventListener('click', function() {
+		document.querySelector('#two').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + two.value;
+			output.value = output.value + document.querySelector('#two').value;
 		});
-		three.addEventListener('click', function() {
+		document.querySelector('#three').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + three.value;
+			output.value = output.value + document.querySelector('#three').value;
 		});
-		four.addEventListener('click', function() {
+		document.querySelector('#four').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + four.value;
+			output.value = output.value + document.querySelector('#four').value;
 		});
-		five.addEventListener('click', function() {
+		document.querySelector('#five').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + five.value;
+			output.value = output.value + document.querySelector('#five').value;
 		});
-		six.addEventListener('click', function() {
+		document.querySelector('#six').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + six.value;
+			output.value = output.value + document.querySelector('#six').value;
 		});
-		seven.addEventListener('click', function() {
+		document.querySelector('#seven').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + seven.value;
+			output.value = output.value + document.querySelector('#seven').value;
 		});
-		eight.addEventListener('click', function() {
+		document.querySelector('#eight').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + eight.value;
+			output.value = output.value + document.querySelector('#eight').value;
 		});
-		nine.addEventListener('click', function() {
+		document.querySelector('#nine').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + nine.value;
+			output.value = output.value + document.querySelector('#nine').value;
 		});
-		zero.addEventListener('click', function() {
+		document.querySelector('#zero').addEventListener('click', function() {
 			if(output.value == 0) {
 				output.value = '';
 			}
-			output.value = output.value + zero.value;
+			output.value = output.value + document.querySelector('#zero').value;
+		});
+		document.querySelector('#dot').addEventListener('click', function() {
+			if(output.value == 0) {
+				output.value = '';
+			}
+			output.value = output.value + document.querySelector('#dot').value;
 		});
 		
-		clear.addEventListener('click', function() {
+		document.querySelector('#clear').addEventListener('click', function() {
 			output.value = 0;
 			addNum = '';
 			subtractNum = '';
 			multiplyNum = '';
 			divideNum = '';
 		});
-		
-		
-		
+
 		add.addEventListener('click', function() {
+			if(subtractNum != '') {
+				output.value =  Number(subtractNum) - Number(output.value);
+				subtractNum = '';
+			} else if(multiplyNum != '') {
+				output.value = Number(multiplyNum) * Number(output.value);
+				multiplyNum = '';
+			} else if(divideNum != '') {
+				output.value = Number(divideNum) / Number(output.value);
+				divideNum ='';
+			}
+			
 			if(output.value != '' && addNum == '') {
 				addNum = output.value;
 				output.value = '';
+				console.log('addNum1 : ' + addNum);
 			} else if(addNum != '') {
-				addNum = Number(addNum) + Number(output.value)
+				addNum = Number(addNum) + Number(output.value);
 				output.value = '';
+				console.log('addNum2 : ' + addNum);
 			}
-			
 		});
 		
 		subtract.addEventListener('click', function () {
-			if(output.value != '') {
-				subtractNum = output.value;
+			if(addNum != '') {
+				output.value = Number(addNum) + Number(output.value);
+				addNum = '';
+			} else if(multiplyNum != '') {
+				output.value = Number(multiplyNum) * Number(output.value);
+				multiplyNum = '';
+			} else if(divideNum != '') {
+				output.value = Number(divideNum) / Number(output.value);
+				divideNum = '';
 			}
-			output.value = '';
+			
+			if(output.value != '' && subtractNum == '') {
+				subtractNum = output.value;
+				output.value = '';
+				console.log('subtract1 : ' + subtractNum);
+			} else if(subtractNum != '') {
+				subtractNum = Number(subtractNum) - Number(output.value);
+				output.value = '';
+				console.log('subtract2 : ' + subtractNum);
+			}
 		});
 		
 		multiply.addEventListener('click', function () {
-			if(output.value != '') {
-				multiplyNum = output.value;
+			if(subtractNum != '') {
+				output.value =  Number(subtractNum) - Number(output.value);
+				subtractNum ='';
+			} else if(addNum != '') {
+				output.value = Number(addNum) + Number(output.value);
+				addNum = '';
+			} else if(divideNum != '') {
+				output.value = Number(divideNum) / Number(output.value);
+				divideNum = '';
 			}
-			output.value = '';
+			
+			if(output.value != '' && multiplyNum == '') {
+				multiplyNum = output.value;
+				output.value = '';
+				console.log('multiplyNum1 : ' + multiplyNum);
+			} else if(multiplyNum != '') {
+				if(output.value == '') {
+					output.value = '1';
+				}
+				multiplyNum = Number(multiplyNum) * Number(output.value);
+				output.value = '';
+				console.log('multiplyNum2 : ' + multiplyNum);
+			}
 		});
 		
 		divide.addEventListener('click', function () {
-			if(output.value != '') {
-				divideNum = output.value;
+			if(subtractNum != '') {
+				output.value =  Number(subtractNum) - Number(output.value);
+				subtractNum = '';
+			} else if(multiplyNum != '') {
+				output.value = Number(multiplyNum) * Number(output.value);
+				multiplyNum = '';
+			} else if(addNum != '') {
+				output.value = Number(addNum) + Number(output.value);
+				addNum = '';
 			}
-			output.value = '';
+			
+			if(output.value != '' && divideNum == '') {
+				divideNum = output.value;
+				output.value = '';
+				console.log('divideNum1 : ' + divideNum);
+			} else if(divideNum != '') {
+				if(output.value == '') {
+					output.value = '1';
+				}
+				divideNum = Number(divideNum) / Number(output.value);
+				output.value = '';
+				console.log('divideNum2 : ' + divideNum);
+			}
 		});
 		
-		enter.addEventListener('click', function() {
+		document.querySelector('#enter').addEventListener('click', function() {
 			if(addNum != 0) {
-				output.value = Number(addNum)
+				output.value = Number(addNum) + Number(output.value);
+				addNum = '';
 			}
 
 			if(subtractNum != 0) {
-				output.value = Number(subtractNum) - Number(output.value)
+				output.value = Number(subtractNum) - Number(output.value);
+				subtractNum = '';
 			}
 			
 			if(multiplyNum != 0) {
-				output.value = Number(multiplyNum) * Number(output.value)
+				output.value = Number(multiplyNum) * Number(output.value);
+				multiplyNum = '';
 			}
 			
 			if(divideNum != 0) {
-				output.value = Number(divideNum) / Number(output.value)
+				output.value = Number(divideNum) / Number(output.value);
+				divideNum = '';
 			}
 		});
 		

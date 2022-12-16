@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+	// 객체지향방식으로...
+	let play = function() {
+		alert('play'); 
+	}
+	
+	let flag = true;
+	if(flag) {
+		play();
+	} else {
+		console.log('Not Play!');
+	}
+	
+	// 함수프로그래밍방식으로...
+	let exePlay = function(flag, callback) {
+		if(flag) {
+			callback();
+		} else {
+			console.log('Not Play!');
+		}
+	}
+	
+	exePlay(true, play);
+	exePlay(true, function() {alert('Have a Nice Day')});
+	// exePlay(true, () => {alert('Have a Nice Day')});
+	
+	/*
+		this
+		1) 함수 -> window(전역영역 글로벌영역,,,,)
+		2) 생성자 함수 -> new연산의 결과 메모리 영역
+		3) 멤버함수(메소드) -> 함수가 소속된 객체
+		4) 화살표 함수 -> 위치가 어디든 window(전역영역)을 가리킨다
+	
+	*/
+</script>
+</head>
+<body>
+
+</body>
+</html>
